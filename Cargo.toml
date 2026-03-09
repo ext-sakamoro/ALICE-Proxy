@@ -1,0 +1,10 @@
+[package]
+name = "alice-proxy"
+version = "1.0.0"
+edition = "2021"
+authors = ["Moroya Sakamoto"]
+license = "MIT"
+description = "L7 reverse proxy with routing, header rewriting, load balancing, and circuit breaker"
+
+[lib]
+crate-type = ["rlib"]
