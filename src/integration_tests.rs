@@ -397,8 +397,8 @@ fn lb_weighted() {
 fn lb_ip_hash_consistent() {
     let ups = vec![Upstream::new("a", 1), Upstream::new("b", 1)];
     let lb = LoadBalancer::new(ups, LbStrategy::IpHash);
-    let idx1 = lb.select("192.168.1.1");
-    let idx2 = lb.select("192.168.1.1");
+    let idx1 = lb.select("192.0.2.1");
+    let idx2 = lb.select("192.0.2.1");
     assert_eq!(idx1, idx2);
 }
 
@@ -412,8 +412,8 @@ fn lb_ip_hash_different_keys() {
     ];
     let lb = LoadBalancer::new(ups, LbStrategy::IpHash);
     // Different keys should (likely) map to different upstreams
-    let idx1 = lb.select("10.0.0.1");
-    let idx2 = lb.select("10.0.0.200");
+    let idx1 = lb.select("198.51.100.1");
+    let idx2 = lb.select("198.51.100.200");
     // We just check they are valid indices
     assert!(idx1 < 4);
     assert!(idx2 < 4);
